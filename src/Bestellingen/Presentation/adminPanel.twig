@@ -1,0 +1,63 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Admin Panel{% endblock %}
+
+{% block userinfo %}
+    <div class="col-md-6">
+        <div class="row profilebuttons">
+            <h4>Welkom, <a href="">{{voornaam}}</a></h4>
+            <a href="logout.php" class="logout">Log out</a>
+        </div>
+    </div>
+{% endblock %}
+
+{% block navigation %}
+    <ul class="nav nav-pills nav-justified">
+        <li role="presentation" class="active"><a href="adminPanel.php">Userlist</a></li>
+        <li role="presentation"><a href="">Bestellinglijst</a></li>
+        <li role="presentation"><a href="">Productenlijst</a></li>
+        <li role="presentation"><a href="">Profile</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <table class="table">
+                <thead>
+                <td colspan="10" bgcolor="#EEE">Userlist</td>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Naam</th>
+                        <th>Voornaam</th>
+                        <th>Straat</th>
+                        <th>Huisnummer</th>
+                        <th>Postcode</th>
+                        <th>Woonplaats</th>
+                        <th>Emailadres</th>
+                        <th>Admin</th>
+                        <th>Blocked</th>
+                    </tr>
+                    {% for user in userlist %}
+                        <tr>
+                            <td>{{user.naam}}</td>
+                            <td>{{user.voornaam}}</td>
+                            <td>{{user.straat}}</td>
+                            <td>{{user.huisnummer}}</td>
+                            <td>{{user.postcode}}</td>
+                            <td>{{user.woonplaats}}</td>
+                            <td>{{user.emailadres}}</td>
+                            <td>{{user.admin}}</td>
+                            <td>{{user.blocked}}</td>
+                            <td><a href="blockUser.php?id={{user.id}}"><button class="btn btn-danger">Block</button></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+{% endblock %}

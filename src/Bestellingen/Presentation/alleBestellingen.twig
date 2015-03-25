@@ -1,0 +1,55 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Alle Bestellingen{% endblock %}
+
+        {% block navigation %}
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="bestelmenu.php">Bestelmenu</a></li>
+            <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+            <li role="presentation" class="active"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+            <li role="presentation"><a href="profile.php">Profile</a></li>
+        </ul>
+        {% endblock %}
+
+{% block content %}
+
+    {% if stdAlleBestellingen is defined %}
+        <div class="row bestellingen">
+            {% for stdBestelling in stdAlleBestellingen.bestellingLijst %}
+                {% set totaalprijs = 0 %}
+                <div class="col-md-3">
+                    <table class="table">
+                        <thead bgcolor="#eee">
+                        <td colspan="1" >Bestelling ID : {{stdBestelling.oBestelling.id}}</td><br>
+                            <td colspan="2">Afhaaldatum : {{stdBestelling.oBestelling.datum}}</td>
+                        </thead>
+                        <tbody> 
+                            <tr>
+                                <th>Productnaam</th>
+                                <th>Aantal</th>
+                                <th>Prijs</th>
+                            </tr>
+                            {% for stdProduct in  stdBestelling.producten %}
+                                <tr>
+                                    <td>{{stdProduct.oProduct.naam}}</td>
+                                    <td>{{stdProduct.aantal}}</td>
+                                    <td>{{(stdProduct.oProduct.prijs*stdProduct.aantal)/100}}</td>
+                                </tr>
+                                {% set totaalprijs = totaalprijs + (stdProduct.oProduct.prijs*stdProduct.aantal) %}
+                            {% endfor %}
+                            <tr border="1px solid red">
+                                <td colspan="2">Totaalprijs</td>
+                                <td>{{totaalprijs/100}} &#8364;</td>
+                            </tr>
+                            <tr>
+                                <td colspan="4"><a href="deleteBestelling.php?id={{stdBestelling.oBestelling.id}}&&datum={{stdBestelling.oBestelling.datum}}"><button class="btn btn-default">Annuleer</button></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            {% endfor %}
+        </div>
+
+    {% endif %}
+{% endblock %}

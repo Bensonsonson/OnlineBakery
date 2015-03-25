@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block userinfo %} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-11"></div>
+    <div class="col-md-1"><a href="index.php"><button class="btn btn-default">Back</button></a></div>
+</div>
+    <form action="paswoordVergeten.php" method="post" class="form-inline" name="paswoordVergeten" id="paswoordVergeten">
+        <fieldset>
+            <legend>Paswoord vergeten</legend>
+            <div class="row">        
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-6">
+                    <label for="paswoordVergeten" class="control-label">Emailaddress</label>
+                    <input type="text" name="paswoordVergeten" class="form-control" placeholder="Emailaddress" />
+                    <button type="submit" class="btn btn-primary" name="submit">Verstuur nieuw paswoord</button>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+</div>
+{% endblock %}

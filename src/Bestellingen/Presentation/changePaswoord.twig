@@ -1,0 +1,34 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Profile page{% endblock %}
+
+{% block navigation %}
+    <ul class="nav nav-pills nav-justified">
+        <li role="presentation"><a href="bestelmenu.php">Bestelmenu</a></li>
+        <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+        <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+        <li role="presentation" class="active"><a href="profile.php">Profile</a></li>
+    </ul>
+{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-10">
+            <form action="changePaswoord.php" method="POST" class="form-inline" name="changePaswoord" id="changePaswoord">
+                        <fieldset>
+            <legend>Verander paswoord</legend>
+                    <label for="emailadres" class="control-label">Emailaddress</label>
+                    <input type="text" name="emailadres" class="form-control" placeholder="Emailaddress" value="{{emailadres}}"/>
+                    <label for="oldPaswoord" class="control-label">Old Paswoord</label>
+                    <input type="text" name="oldPaswoord" class="form-control" placeholder="Old paswoord" />
+                    <label for="newPaswoord" class="control-label">New Paswoord</label>
+                    <input type="text" name="newPaswoord" class="form-control" placeholder="New paswoord" />
+                    <button type="submit" class="btn btn-primary" name="submit">Change Paswoord</button>
+        </fieldset>
+            </form>
+        </div>
+        <div class="col-md-1"></div>
+    </div>
+{% endblock %}

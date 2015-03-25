@@ -1,0 +1,76 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Profile page{% endblock %}
+
+        {% block navigation %}
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="bestelmenu.php">Bestelmenu</a></li>
+            <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+            <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+            <li role="presentation" class="active"><a href="profile.php">Profile</a></li>
+        </ul>
+        {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <form action="editProfile.php" method="POST">
+                <table class="table">
+                    <thead>
+                    <td colspan="3" bgcolor="#EEE">Profile</td>
+                    </thead>
+                    <tbody> 
+                        <tr>
+                            <td>Naam</td>
+                            <td>{{user.naam}}</td>
+                            <td><input type="text" name="naam" placeholder="nieuwe naam"></td>
+                        </tr>
+                        <tr>
+                            <td>Voornaam</td>
+                            <td>{{user.voornaam}}</td>
+                            <td><input type="text" name="voornaam" placeholder="nieuwe voornaam"></td>
+                        </tr>
+                        <tr>
+                            <td>Straat</td>
+                            <td>{{user.straat}}</td>
+                            <td><input type="text" name="straat" placeholder="nieuwe straat"></td>
+                        </tr>
+                        <tr>
+                            <td>Huisnummer</td>
+                            <td>{{user.huisnummer}}</td>
+                            <td><input type="text" name="huisnummer" placeholder="nieuwe huisnummer"></td>
+                        </tr>
+                        <tr>
+                            <td>Postcode</td>
+                            <td>{{user.postcode}}</td>
+                            <td><input type="text" name="postcode" placeholder="nieuwe postcode"></td>
+                        </tr>
+                        <tr>
+                            <td>Woonplaats</td>
+                            <td>{{user.woonplaats}}</td>
+                            <td><input type="text" name="woonplaats" placeholder="nieuwe woonplaats"></td>
+                        </tr>
+                        <tr>
+                            <td>Emailadres</td>
+                            <td>{{user.emailadres}}</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>Paswoord</td>
+                            <td></td>
+                            <td><a href="changePaswoord.php">Change paswoord</a></td>
+                        </tr>
+                        <tr>
+                            <td><a href='profile.php'><button class="btn btn-default">Back to profile</button></a></td>
+                            <td></td>
+                            <td><input type="submit" class="btn btn-primary" name="submit" value="Save changes"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+        <div class="col-md-3"></div>
+    </div>
+{% endblock %}

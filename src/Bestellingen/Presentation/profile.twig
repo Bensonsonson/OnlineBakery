@@ -1,0 +1,60 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Profile page{% endblock %}
+
+        {% block navigation %}
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="bestelmenu.php">Bestelmenu</a></li>
+            <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+            <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+            <li role="presentation" class="active"><a href="profile.php">Profile</a></li>
+        </ul>
+        {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <table class="table">
+                <thead>
+                <td colspan="3" bgcolor="#EEE">Profile</td>
+                </thead>
+                <tbody> 
+                    <tr>
+                        <td>Naam</td>
+                        <td>{{user.naam}}</td>
+                    </tr>
+                    <tr>
+                        <td>Voornaam</td>
+                        <td>{{user.voornaam}}</td>
+                    </tr>
+                    <tr>
+                        <td>Straat</td>
+                        <td>{{user.straat}}</td>
+                    </tr>
+                    <tr>
+                        <td>Huisnummer</td>
+                        <td>{{user.huisnummer}}</td>
+                    </tr>
+                    <tr>
+                        <td>Postcode</td>
+                        <td>{{user.postcode}}</td>
+                    </tr>
+                    <tr>
+                        <td>Woonplaats</td>
+                        <td>{{user.woonplaats}}</td>
+                    </tr>
+                    <tr>
+                        <td>Emailadres</td>
+                        <td>{{user.emailadres}}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="4"><a href="editProfile.php"><button class="btn btn-default">Edit profile</button></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+                    <div class="col-md-3"></div>
+    </div>
+{% endblock %}

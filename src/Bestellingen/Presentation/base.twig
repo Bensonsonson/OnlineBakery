@@ -1,0 +1,52 @@
+{# empty Twig template #}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% block head %}
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <link rel="stylesheet" href="src/Bestellingen/Presentation/css/normalize.css" />
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+            <link rel="stylesheet" href="src/Bestellingen/Presentation/css/style.css" />
+            <title>Bakkerij</title>
+        {% endblock %}
+    </head>
+    <body>
+
+        <div class="header">
+            <div class="row">
+                <div class="col-md-6">
+                    <h1>Bakkerij {% block pagename %}{% endblock %}</h1>
+                </div>
+                {% block userinfo %}
+                    <div class="col-md-6">
+                        <div class="row profilebuttons">
+                            <h4>Welkom, <a href="profile.php">{{voornaam}}</a></h4>
+                            <a href="logout.php" class="logout">Log out</a>
+                        </div>
+                    </div>
+                {% endblock %}
+            </div>
+        </div>
+        {% block navigation %}
+        {% endblock %}
+        <div class="container-fluid">
+            {% block messages %}
+                {%if message != "" %}
+                    <div class="message bg-success">
+                        <p class="text-success">{{message}}</p>
+                    </div>
+                {%endif%}
+                {%if errormessage != "" %}
+                    <div class="errormessage bg-danger">
+                        <p class="text-danger">{{errormessage}}</p>
+                    </div>
+                {%endif%}
+            {% endblock %}
+            {% block content %}
+
+            {% endblock %}
+
+        </div>
+    </body>
+</html>

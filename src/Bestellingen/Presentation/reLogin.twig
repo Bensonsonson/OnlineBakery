@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block userinfo %} {% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-11"></div>
+    <div class="col-md-1"><a href="index.php"><button class="btn btn-default">Back</button></a></div>
+</div>
+    <form action="login.php" method="post" class="form-inline" name="reLogin" id="reLogin">
+        <fieldset>
+            <legend>Re-Login</legend>
+            <div class="row">        
+                <div class="col-md-3"></div>
+                <div class="form-group col-md-6">
+                    <label for="emailadres" class="control-label">{{emailadres}}</label>
+                    <input type="password" name="paswoord" class="form-control" placeholder="Password" />
+                    <button type="submit" class="btn btn-primary" name="submit">Login</button>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+        </fieldset>
+    </form>
+</div>
+
+</div>
+{% endblock %}

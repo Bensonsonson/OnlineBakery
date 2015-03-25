@@ -1,0 +1,88 @@
+html,body{
+    min-height: 100%;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}
+
+.header{
+    background-image: url(../img/food.png);
+    box-shadow: 1px 0 1px #999;
+    width: 100%;
+}
+.header h1{
+    margin: 0;
+    padding: 25px;
+    color: white;
+    text-shadow: 1px 1px 1px #999;
+}
+.profilebuttons h4{
+    position: absolute;
+    right: 40px;
+    top: 28px;
+    color: white;
+    text-shadow: 1px 1px 1px #999;
+}
+a.logout{
+    color: white;
+    text-decoration: underline;
+    position: absolute;
+    top: 0;
+    right: 20px;
+}
+#loginForm{
+    position: absolute;
+    top: 33px;
+    right: 20px;
+}
+#loginForm a{
+    color: white;
+}
+.container-fluid{
+    margin-top: 20px;
+}
+ul.nav{
+    margin-bottom: 20px;
+    border-bottom: 1px solid #337AB7;
+}
+.nav-pills > li > a {
+    -moz-border-radius: 0px;
+    webkit-border-radius: 0px;
+    border-radius: 0px;
+}
+
+.message,.errormessage{
+    width: 50%;
+    margin: 10px 25%;
+    text-align: center;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+}
+.message p,.errormessage p{
+    line-height: 30px;
+    margin: 0;
+}
+
+.message{
+    border: 1px solid #5DA35A;
+}
+.errormessage{
+    border: 1px solid #D25F5F;
+}
+
+table {
+    border:1px solid #ccc;
+}
+table tr{
+    padding: 20px;
+}
+footer{
+    position:absolute;
+    bottom:0;
+    left: 40%;
+    text-align: center;
+    color: #999;
+    margin: 40px 0 10px 0;
+}

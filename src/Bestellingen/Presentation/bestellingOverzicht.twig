@@ -1,0 +1,58 @@
+{# empty Twig template #}
+{% extends "base.twig" %}
+
+{% block pagename %}- Bestelling Overzicht{% endblock %}
+
+        {% block navigation %}
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation"><a href="bestelmenu.php">Bestelmenu</a></li>
+            <li role="presentation" class="active"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+            <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+            <li role="presentation"><a href="profile.php">Profile</a></li>
+        </ul>
+        {% endblock %}
+
+{% block content %}
+<table class="table">
+    <tbody>
+            {% if stdOverzicht is defined %}
+                {% set totaalprijs = 0 %}
+        <tr bgcolor="#eee">
+            <th>Productnaam</th>
+            <th>Aantal</th>
+            <th>Prijs</th>
+        </tr>
+                {% for winkelmandjeLijn in stdOverzicht.winkelmandjeLijnen %}
+        <tr>
+            <td>{{winkelmandjeLijn.oProduct.naam}}</td>
+            <td>{{winkelmandjeLijn.aantal}}</td>
+            <td>{{winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100}}</td>
+        </tr>
+                    {% set totaalprijs = totaalprijs + (winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100) %}
+                {% endfor %}
+        <tr border="1px solid red">
+            <td colspan="2">Totaalprijs</td>
+            <td>{{totaalprijs}} &#8364;</td>
+        </tr>
+        <tr>
+            <td colspan="4"><a href="bestelmenu.php"><button class="btn btn-default">Bewerk</button></a></td>
+        </tr>
+            {% else %}
+    <tr>
+        <td>Empty winkelmandje</td>
+    </tr>
+            {% endif %}
+</tbody>
+</table>
+    <form method="POST" action="bestelWinkelmandje.php">
+        <div class="selectContainer col-md-3">
+        <select name="afhaaldatum" class="form-control">
+            <option value="" disabled="disabled" style="display:none" selected="selected">Kies afhaaldatum</option>
+                            {% for afhaaldatum in stdOverzicht.vrijeDatums %}
+            <option value="{{afhaaldatum}}">{{afhaaldatum}}</option>
+                            {% endfor %}
+        </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Bestel Winkelmandje</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,70 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Login{% endblock %}
+{% block userinfo %}    
+    <form action="login.php" method="post" class="form-inline" name="loginForm" id="loginForm">
+        <div class="form-group">
+                <input type="email" name="email" class="form-control" placeholder="Emailadres" />
+        </div>
+        <div class="form-group">
+                <input type="password" name="paswoord"  class="form-control" placeholder="Paswoord" />
+        </div>
+        <button type="submit" class="btn btn-default" name="submit">Log in</button>
+        <a href="paswoordVergeten.php">Paswoord vergeten?</a>
+    </form> 
+{% endblock %}
+
+{% block content %}
+    <form action="register.php" method="post" class="form-horizontal" name="registerForm" id="registerForm">
+        <fieldset>
+            <legend>Register</legend>
+            <div class="form-group">
+                <label for="naam" class="col-md-3 control-label">Naam</label>
+                <div class="col-md-6">
+                    <input type="text" name="naam" class="form-control" placeholder="Naam" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="voornaam" class="col-md-3 control-label">Voornaam</label>
+                <div class="col-md-6">
+                    <input type="text" name="voornaam" class="form-control" placeholder="Voornaam" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="straat" class="col-md-3 control-label">Straat</label>
+                <div class="col-md-6">
+                    <input type="text" name="straat" class="form-control" placeholder="Straat" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="huisnummer" class="col-md-3 control-label">Huisnummer</label>
+                <div class="col-md-6">
+                    <input type="text" name="huisnummer" class="form-control" placeholder="Huisnummer" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="postcode" class="col-md-3 control-label">Postcode</label>
+                <div class="col-md-6">
+                    <input type="text" name="postcode" class="form-control" placeholder="Postcode" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="woonplaats" class="col-md-3 control-label">Woonplaats</label>
+                <div class="col-md-6">
+                    <input type="text" name="woonplaats" class="form-control" placeholder="Woonplaats" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="registeremail" class="col-md-3 control-label">Emailadres</label>
+                <div class="col-md-6">
+                    <input type="email" name="registeremail" class="form-control" placeholder="Emailadres" />
+                </div>
+            </div>
+            <div class="col-md-6 col-md-offset-3">
+                <button type="submit" class="btn btn-primary" name="submit">Register</button>
+            </div>
+        </fieldset>
+    </form>
+</div>
+{% endblock %}

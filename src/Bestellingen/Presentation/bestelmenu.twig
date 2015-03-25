@@ -1,0 +1,78 @@
+{# empty Twig template #}
+{% extends 'base.twig' %}
+
+{% block pagename %}- Bestelmenu{% endblock %}
+
+        {% block navigation %}
+        <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="active"><a href="bestelmenu.php">Bestelmenu</a></li>
+            <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+            <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+            <li role="presentation"><a href="profile.php">Profile</a></li>
+        </ul>
+        {% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <h3>Winkelmandje</h3>
+            <table class="table">
+                <tbody>
+                    {% if winkelmandje != null %}
+                        {% set totaalprijs = 0 %}
+                        <tr bgcolor="#eee">
+                            <th>Productnaam</th>
+                            <th>Aantal</th>
+                            <th>Prijs</th>
+                            <th></th>
+                        </tr>
+                        {% for winkelmandjeLijn in winkelmandje %}
+                            <tr>
+                                <td>{{winkelmandjeLijn.oProduct.naam}}</td>
+                                <td>{{winkelmandjeLijn.aantal}}</td>
+                                <td>{{winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100}}</td>
+                                <td><a href="deleteProduct.php?id={{winkelmandjeLijn.oProduct.id}}"><button>-</button></a></td>
+                            </tr>
+                            {% set totaalprijs = totaalprijs + (winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100) %}
+                        {% endfor %}
+                        <tr>
+                            <td colspan="2">Totaalprijs</td>
+                            <td>{{totaalprijs}} &#8364;</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td colspan="4"><a href="bestellingOverzicht.php"><button class="btn btn-primary">Checkout winkelmandje</button></a></td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td></td>
+                            <td colspan="2" align="center">Empty winkelmandje</td>
+                            <td></td>
+                        </tr>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+        <div class="col-md-6">
+            <h3>Productenlijst</h3>
+            {% if productenlijst is defined %}
+                <table class="table table striped">
+                    <tbody>
+                        <tr bgcolor="#eee">
+                            <th>Productnaam</th>
+                            <th>Prijs</th>
+                            <th></th>
+                        </tr>
+                        {% for product in productenlijst %}
+                            <tr>
+                                <td>{{product.naam}}</td>
+                                <td>{{product.prijs/100}}</td>
+                                <td><a href="addProduct.php?id={{product.id}}"><button>+</button></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

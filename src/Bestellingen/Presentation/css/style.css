@@ -7,9 +7,11 @@ html,body{
 }
 
 .header{
-    background-image: url(../img/food.png);
+    background: url(../img/bakkerij1.jpg) no-repeat;
+    background-size: cover;
     box-shadow: 1px 0 1px #999;
     width: 100%;
+    height: 300px;
 }
 .header h1{
     margin: 0;
@@ -19,10 +21,13 @@ html,body{
 }
 .profilebuttons h4{
     position: absolute;
-    right: 40px;
-    top: 28px;
-    color: white;
-    text-shadow: 1px 1px 1px #999;
+    right: 20px;
+    top: 20px;
+    padding: 10px;
+    color: #777;
+    border-radius: 2px;
+    background-color: white;
+    border: 1px solid #aaa;
 }
 a.logout{
     color: white;
@@ -77,6 +82,10 @@ table {
 }
 table tr{
     padding: 20px;
+}
+table tr img.img-square{
+    width : 150px;
+    height: 150px;
 }
 footer{
     position:absolute;

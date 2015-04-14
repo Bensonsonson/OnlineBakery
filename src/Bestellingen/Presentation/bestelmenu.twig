@@ -21,27 +21,29 @@
                     {% if winkelmandje != null %}
                         {% set totaalprijs = 0 %}
                         <tr bgcolor="#eee">
-                            <th>Productnaam</th>
+                            <th>Product</th>
+                            <th>Naam</th>
                             <th>Aantal</th>
                             <th>Prijs</th>
                             <th></th>
                         </tr>
                         {% for winkelmandjeLijn in winkelmandje %}
                             <tr>
+                                <td><img src="src/Bestellingen/Presentation/img/{{winkelmandjeLijn.oProduct.naam}}.jpg" class="img img-square img-thumbnail"></td>
                                 <td>{{winkelmandjeLijn.oProduct.naam}}</td>
                                 <td>{{winkelmandjeLijn.aantal}}</td>
                                 <td>{{winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100}}</td>
-                                <td><a href="deleteProduct.php?id={{winkelmandjeLijn.oProduct.id}}"><button>-</button></a></td>
+                                <td><a href="deleteProduct.php?id={{winkelmandjeLijn.oProduct.id}}"><button>- Verwijder</button></a></td>
                             </tr>
                             {% set totaalprijs = totaalprijs + (winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100) %}
                         {% endfor %}
                         <tr>
-                            <td colspan="2">Totaalprijs</td>
+                            <td colspan="3">Totaalprijs</td>
                             <td>{{totaalprijs}} &#8364;</td>
                             <td></td>
                         </tr>
                         <tr>
-                            <td colspan="4"><a href="bestellingOverzicht.php"><button class="btn btn-primary">Checkout winkelmandje</button></a></td>
+                            <td colspan="5"><a href="bestellingOverzicht.php"><button class="btn btn-primary pull-right">Checkout winkelmandje</button></a></td>
                         </tr>
                     {% else %}
                         <tr>
@@ -59,15 +61,17 @@
                 <table class="table table striped">
                     <tbody>
                         <tr bgcolor="#eee">
-                            <th>Productnaam</th>
+                            <th>Product</th>
+                            <th>Naam</th>
                             <th>Prijs</th>
                             <th></th>
                         </tr>
                         {% for product in productenlijst %}
                             <tr>
+                                <td><img src="src/Bestellingen/Presentation/img/{{product.naam}}.jpg" class="img img-square img-thumbnail"></td>
                                 <td>{{product.naam}}</td>
                                 <td>{{product.prijs/100}}</td>
-                                <td><a href="addProduct.php?id={{product.id}}"><button>+</button></a></td>
+                                <td><a href="addProduct.php?id={{product.id}}"><button>+ Voeg toe</button></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>

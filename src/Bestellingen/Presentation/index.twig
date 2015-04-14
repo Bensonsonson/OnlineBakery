@@ -12,10 +12,11 @@
         </div>
         <button type="submit" class="btn btn-default" name="submit">Log in</button>
         <a href="paswoordVergeten.php">Paswoord vergeten?</a>
-    </form> 
+    </form>
 {% endblock %}
 
 {% block content %}
+    <ul class="errormessage bg-danger text-danger" id="errorContainerLogin"></ul>
     <form action="register.php" method="post" class="form-horizontal" name="registerForm" id="registerForm">
         <fieldset>
             <legend>Register</legend>
@@ -66,5 +67,7 @@
             </div>
         </fieldset>
     </form>
-</div>
+    <script src="src/Bestellingen/Presentation/js/jquery/dist/jquery.min.js" type="text/javascript"></script>
+    <script src="src/Bestellingen/Presentation/js/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="src/Bestellingen/Presentation/js/main.js" type="text/javascript"></script>
 {% endblock %}

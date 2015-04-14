@@ -56,7 +56,9 @@ ul.nav{
     webkit-border-radius: 0px;
     border-radius: 0px;
 }
-
+#errorContainerLogin{
+    display:none;
+}
 .message,.errormessage{
     width: 50%;
     margin: 10px 25%;

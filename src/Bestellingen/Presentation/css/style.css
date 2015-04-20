@@ -37,9 +37,7 @@ a.logout{
     right: 20px;
 }
 #loginForm{
-    position: absolute;
-    top: 33px;
-    right: 20px;
+    padding-top: 33px;
 }
 #loginForm a{
     color: white;
@@ -58,6 +56,8 @@ ul.nav{
 }
 #errorContainerLogin{
     display:none;
+    list-style: none;
+    padding: 5px;
 }
 .message,.errormessage{
     width: 50%;
@@ -76,7 +76,7 @@ ul.nav{
     border: 1px solid #5DA35A;
 }
 .errormessage{
-    border: 1px solid #D25F5F;
+    border: 1px solid #a94442;
 }
 
 table {

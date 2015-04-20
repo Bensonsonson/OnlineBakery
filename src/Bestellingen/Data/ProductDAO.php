@@ -10,7 +10,7 @@ class ProductDAO {
     //create
     public function newProduct($naam, $prijs) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'INSERT INTO producten (naam,prijs) VALUES(:naam,:prijs)';
+        $sql = 'INSERT INTO bakkerij_producten (naam,prijs) VALUES(:naam,:prijs)';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':naam', $naam);
         $sth->bindParam(':prijs', $prijs);
@@ -21,7 +21,7 @@ class ProductDAO {
     //read
     public function getById($id) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'SELECT * FROM producten WHERE id = :id';
+        $sql = 'SELECT * FROM bakkerij_producten WHERE id = :id';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':id', $id);
         $sth->execute();
@@ -43,7 +43,7 @@ class ProductDAO {
     public function getAll() {
         $productenlijst = array();
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'SELECT * FROM producten';
+        $sql = 'SELECT * FROM bakkerij_producten';
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $resultSet = $sth;
@@ -62,7 +62,7 @@ class ProductDAO {
     //update
     public function updateById($id, $naam, $prijs) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE producten SET naam = :naam, prijs = :prijs WHERE id = :id';
+        $sql = 'UPDATE bakkerij_producten SET naam = :naam, prijs = :prijs WHERE id = :id';
         $sth->bindParam(':id', $id);
         $sth->bindParam(':naam', $naam);
         $sth->bindParam(':prijs', $prijs);
@@ -74,7 +74,7 @@ class ProductDAO {
     //delete
     public function deleteById($id) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'DELETE FROM producten WHERE id = :id';
+        $sql = 'DELETE FROM bakkerij_producten WHERE id = :id';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':id', $id);
         $sth->execute();

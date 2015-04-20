@@ -35,12 +35,32 @@ $(document).ready(function ($) {
             }
         },
         messages: {
+            voornaam: "Vul uw achternaam in",
+            naam: "Vul uw voornaam in",
+            straat: "Geef uw straatnaam in",
+            huisnummer: "Wat is uw huisnummer?",
             postcode: {
+                required: "Vul uw postcode in",
                 digits: "Enkel getallen toegestaan"
             },
             registeremail: {
                 required: "Vul uw emailadres in aub",
                 email: "Geldig emailadres vereist"
+            }
+        },
+        highlight: function (element) {
+            $(element).closest('.form-group').addClass('has-error');
+        },
+        unhighlight: function (element) {
+            $(element).closest('.form-group').removeClass('has-error');
+        },
+        errorElement: 'span',
+        errorClass: 'help-block',
+        errorPlacement: function (error, element) {
+            if (element.parent('.input-group').length) {
+                error.insertAfter(element.parent());
+            } else {
+                error.insertAfter(element);
             }
         }
     });

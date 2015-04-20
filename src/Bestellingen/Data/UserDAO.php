@@ -10,7 +10,7 @@ class UserDAO {
     //create
     public function registerUser($naam, $voornaam, $straat, $huisnummer, $postcode, $woonplaats, $emailadres, $paswoord) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'INSERT INTO users (naam,voornaam,straat,huisnummer,postcode,woonplaats,emailadres,paswoord)
+        $sql = 'INSERT INTO bakkerij_users (naam,voornaam,straat,huisnummer,postcode,woonplaats,emailadres,paswoord)
                 VALUES (:naam,:voornaam,:straat,:huisnummer,:postcode,:woonplaats,:emailadres,:paswoord)';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':naam', $naam);
@@ -28,7 +28,7 @@ class UserDAO {
     //read
     public function getById($id) { //controle bestaande gebruiker in service
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'SELECT * FROM users WHERE id=:id';
+        $sql = 'SELECT * FROM bakkerij_users WHERE id=:id';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':id', $id);
         $sth->execute();
@@ -49,7 +49,7 @@ class UserDAO {
 
     public function getByEmailadres($emailadres) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'SELECT * FROM users WHERE emailadres=:emailadres';
+        $sql = 'SELECT * FROM bakkerij_users WHERE emailadres=:emailadres';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':emailadres', $emailadres);
         $sth->execute();
@@ -71,7 +71,7 @@ class UserDAO {
     public function getAll() {
         $userList = array();
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'SELECT * FROM users';
+        $sql = 'SELECT * FROM bakkerij_users';
         $sth = $dbh->prepare($sql);
         $sth->execute();
         $resultSet = $sth;
@@ -90,7 +90,7 @@ class UserDAO {
     //update
     public function changePaswoord($emailadres, $paswoord) { //controle juiste gebruiker in service + geupdate user returnen in service of doormailen
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET paswoord = :paswoord WHERE emailadres = :emailadres';
+        $sql = 'UPDATE bakkerij_users SET paswoord = :paswoord WHERE emailadres = :emailadres';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':emailadres', $emailadres);
         $sth->bindParam(':paswoord', $paswoord);
@@ -100,7 +100,7 @@ class UserDAO {
 
     public function setNewPaswoord($emailadres, $newPaswoord) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET paswoord = :newPaswoord WHERE emailadres = :emailadres';
+        $sql = 'UPDATE bakkerij_users SET paswoord = :newPaswoord WHERE emailadres = :emailadres';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':emailadres', $emailadres);
         $sth->bindParam(':newPaswoord', $newPaswoord);
@@ -110,7 +110,7 @@ class UserDAO {
 
     public function updateNaam($userId, $newNaam) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET naam = :newNaam WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET naam = :newNaam WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newNaam', $newNaam);
@@ -120,7 +120,7 @@ class UserDAO {
 
     public function updateVoornaam($userId, $newVoornaam) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET voornaam = :newVoornaam WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET voornaam = :newVoornaam WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newVoornaam', $newVoornaam);
@@ -130,7 +130,7 @@ class UserDAO {
 
     public function updateStraat($userId, $newStraat) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET straat = :newStraat WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET straat = :newStraat WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newStraat', $newStraat);
@@ -140,7 +140,7 @@ class UserDAO {
 
     public function updateHuisnummer($userId, $newHuisnummer) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET huisnummer = :newHuisnummer WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET huisnummer = :newHuisnummer WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newHuisnummer', $newHuisnummer);
@@ -150,7 +150,7 @@ class UserDAO {
 
     public function updatePostcode($userId, $newPostcode) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET postcode = :newPostcode WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET postcode = :newPostcode WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newPostcode', $newPostcode);
@@ -160,7 +160,7 @@ class UserDAO {
 
     public function updateWoonplaats($userId, $newWoonplaats) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET woonplaats = :newWoonplaats WHERE id = :userId';
+        $sql = 'UPDATE bakkerij_users SET woonplaats = :newWoonplaats WHERE id = :userId';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':userId', $userId);
         $sth->bindParam(':newWoonplaats', $newWoonplaats);
@@ -171,7 +171,7 @@ class UserDAO {
     //in adminService?
     public function blockById($id) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'UPDATE users SET blocked = 1 WHERE id = :id';
+        $sql = 'UPDATE bakkerij_users SET blocked = 1 WHERE id = :id';
         $sth = $dbh->prepare($sql);
         $sth->bindParam(':id', $id);
         $sth->execute();
@@ -181,7 +181,7 @@ class UserDAO {
     //delete
     public function deleteById($id) {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
-        $sql = 'DELETE FROM users WHERE id = :id';
+        $sql = 'DELETE FROM bakkerij_users WHERE id = :id';
         $sth->bindParam(':id', $id);
         $sth = $dbh->prepare($sql);
         $sth->execute();

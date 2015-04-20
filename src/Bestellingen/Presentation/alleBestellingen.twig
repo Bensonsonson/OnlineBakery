@@ -31,9 +31,8 @@
                                 <th>Aantal</th>
                                 <th>Prijs</th>
                             </tr>
-                            {% for stdProduct in  stdBestelling.producten %}
+                            {% for stdProduct in stdBestelling.producten %}
                                 <tr>
-                                    <td><img src="src/Bestellingen/Presentation/img/{{stdProduct.oProduct.naam}}.jpg" class="img img-square img-thumbnail"></td>
                                     <td>{{stdProduct.oProduct.naam}}</td>
                                     <td>{{stdProduct.aantal}}</td>
                                     <td>{{(stdProduct.oProduct.prijs*stdProduct.aantal)/100}}</td>

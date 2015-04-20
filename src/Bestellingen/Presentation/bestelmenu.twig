@@ -3,18 +3,41 @@
 
 {% block pagename %}- Bestelmenu{% endblock %}
 
-        {% block navigation %}
-        <ul class="nav nav-pills nav-justified">
-            <li role="presentation" class="active"><a href="bestelmenu.php">Bestelmenu</a></li>
-            <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
-            <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
-            <li role="presentation"><a href="profile.php">Profile</a></li>
-        </ul>
-        {% endblock %}
+{% block navigation %}
+    <ul class="nav nav-pills nav-justified">
+        <li role="presentation" class="active"><a href="bestelmenu.php">Bestelmenu</a></li>
+        <li role="presentation"><a href="bestellingOverzicht.php">Bestelling Overzicht</a></li>
+        <li role="presentation"><a href="alleBestellingen.php">Alle Bestellingen</a></li>
+        <li role="presentation"><a href="profile.php">Profile</a></li>
+    </ul>
+{% endblock %}
 
 {% block content %}
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-7">
+            <h3>Productenlijst</h3>
+            {% if productenlijst is defined %}
+                <table class="table table striped">
+                    <tbody>
+                        <tr bgcolor="#eee">
+                            <th>Product</th>
+                            <th>Naam</th>
+                            <th>Prijs</th>
+                            <th></th>
+                        </tr>
+                        {% for product in productenlijst %}
+                            <tr>
+                                <td><img src="src/Bestellingen/Presentation/img/{{product.naam}}.jpg" class="img img-square img-thumbnail"></td>
+                                <td>{{product.naam}}</td>
+                                <td>{{product.prijs/100}}</td>
+                                <td><a href="addProduct.php?id={{product.id}}"><button>+ Voeg toe</button></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div class="col-md-5">
             <h3>Winkelmandje</h3>
             <table class="table">
                 <tbody>
@@ -54,29 +77,6 @@
                     {% endif %}
                 </tbody>
             </table>
-        </div>
-        <div class="col-md-6">
-            <h3>Productenlijst</h3>
-            {% if productenlijst is defined %}
-                <table class="table table striped">
-                    <tbody>
-                        <tr bgcolor="#eee">
-                            <th>Product</th>
-                            <th>Naam</th>
-                            <th>Prijs</th>
-                            <th></th>
-                        </tr>
-                        {% for product in productenlijst %}
-                            <tr>
-                                <td><img src="src/Bestellingen/Presentation/img/{{product.naam}}.jpg" class="img img-square img-thumbnail"></td>
-                                <td>{{product.naam}}</td>
-                                <td>{{product.prijs/100}}</td>
-                                <td><a href="addProduct.php?id={{product.id}}"><button>+ Voeg toe</button></a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            {% endif %}
         </div>
     </div>
 {% endblock %}

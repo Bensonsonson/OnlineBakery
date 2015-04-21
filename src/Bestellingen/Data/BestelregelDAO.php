@@ -32,7 +32,7 @@ class BestelregelDAO {
         $dbh = new PDO(DBConfig::$DB_Connstring, DBConfig::$DB_Username, DBConfig::$DB_Password);
         $sql = 'SELECT bakkerij_users.id as userid, bakkerij_users.naam as naam, voornaam, straat, huisnummer, postcode, woonplaats,
                 emailadres, paswoord, blocked, admin, bakkerij_bestellingen.id as bestellingid, datum, bakkerij_bestelregels.id as bestelregelid,
-                aantal, producten.id as productid, producten.naam as productnaam, prijs
+                aantal, bakkerij_producten.id as productid, bakkerij_producten.naam as productnaam, prijs
                 FROM bakkerij_users, bakkerij_bestellingen, bakkerij_bestelregels, bakkerij_producten
                 WHERE bakkerij_users.id = bakkerij_bestellingen.userid AND bakkerij_bestellingen.id = bakkerij_bestelregels.bestellingid AND bakkerij_producten.id = bakkerij_bestelregels.productid
                 AND bakkerij_bestelregels.bestellingid = :bestellingid';

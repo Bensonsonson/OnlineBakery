@@ -30,7 +30,7 @@
                                 <td><img src="src/Bestellingen/Presentation/img/{{product.naam}}.jpg" class="img img-square img-thumbnail"></td>
                                 <td>{{product.naam}}</td>
                                 <td>{{product.prijs/100}}</td>
-                                <td><a href="addProduct.php?id={{product.id}}"><button>+ Voeg toe</button></a></td>
+                                <td style='text-align: center'><a href="addProduct.php?id={{product.id}}"><button>+ Voeg toe</button></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -54,7 +54,7 @@
                             <tr>
                                 <td><img src="src/Bestellingen/Presentation/img/{{winkelmandjeLijn.oProduct.naam}}.jpg" class="img img-square img-thumbnail"></td>
                                 <td>{{winkelmandjeLijn.oProduct.naam}}</td>
-                                <td>{{winkelmandjeLijn.aantal}}</td>
+                                <td style='text-align: center'>{{winkelmandjeLijn.aantal}}</td>
                                 <td>{{winkelmandjeLijn.oProduct.prijs*winkelmandjeLijn.aantal/100}}</td>
                                 <td><a href="deleteProduct.php?id={{winkelmandjeLijn.oProduct.id}}"><button>- Verwijder</button></a></td>
                             </tr>

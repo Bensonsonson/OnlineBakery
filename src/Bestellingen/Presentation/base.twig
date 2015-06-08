@@ -46,7 +46,13 @@
             {% block content %}
 
             {% endblock %}
-
         </div>
+        
+        {% block scripts %}
+        <script src="src/Bestellingen/Presentation/js/jquery/dist/jquery.min.js"></script>
+        <script src="src/Bestellingen/Presentation/js/bestelWinkelmandje.js"></script>
+        <script src="src/Bestellingen/Presentation/js/addProduct.js"></script>
+        <script src="src/Bestellingen/Presentation/js/main.js"></script>
+        {% endblock %}
     </body>
 </html>

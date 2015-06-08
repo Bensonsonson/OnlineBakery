@@ -50,14 +50,14 @@
             </table>
             <form method="POST" action="bestelWinkelmandje.php">
                 <div class="selectContainer col-md-5">
-                    <select name="afhaaldatum" class="form-control">
+                    <select name="afhaaldatum" id="afhaaldatum" class="form-control">
                         <option value="" disabled="disabled" style="display:none" selected="selected">Kies afhaaldatum</option>
                         {% for afhaaldatum in stdOverzicht.vrijeDatums %}
                             <option value="{{afhaaldatum}}">{{afhaaldatum}}</option>
                         {% endfor %}
                     </select>
                 </div>
-                <button type="submit" class="btn btn-primary">Bestel Winkelmandje</button>
+                <button type="submit" class="btn btn-primary" id="bestelWinkelmandje">Bestel Winkelmandje</button>
             </form>
         </div>
     </div>
